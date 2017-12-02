@@ -13,13 +13,16 @@ export class DashboardComponent implements OnInit {
   contentStr:string;
 
   notes:Note[];
+  recentNotes:Note[];
   ret_Note:Note;
 
   constructor(private noteService:NoteService) { }
 
   ngOnInit() {
     this.notes = new Array();
-    this.getChats();
+    this.recentNotes = new Array(10);
+    this.getRecentNotes();
+    this.getNotes();
   }
 
   createNote(){
@@ -30,15 +33,16 @@ export class DashboardComponent implements OnInit {
         .subscribe(newNote => this.notes.push(newNote));
   }
 
-  getChats(): void {
-    this.noteService.getOldNotes()
+  getNotes(){
+    this.noteService.getNotes()
         .map(oldNotes => oldNotes.json())
         .subscribe(data => this.notes = data);
   }
 
-  /*getChatStream():void {
-    this.connection = this.chatsService.getChatStream(this.id)
-      .subscribe(message => { this.chats.push(message); })
-  }*/
+  getRecentNotes(){
+    this.noteService.getRecentNotes()
+        .map(recents => recents.json())
+        .subscribe(data => this.recentNotes = data);
+  }
 
 }

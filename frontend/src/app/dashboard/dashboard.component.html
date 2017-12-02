@@ -17,11 +17,18 @@
 
   </div>
 
-  <h2>My Notes</h2>
+  <h2>All Notes</h2>
     <ul class="notes">
       <li *ngFor="let note of notes">
-        {{note.content}}
+        {{note.content}} Date: {{note.timestamp | date:"short"}}
       </li>
     </ul>
+
+    <h2>Most Recent Notes</h2>
+      <ul class="notes">
+        <li *ngFor="let note of recentNotes">
+          {{note.content}} Date: {{note.timestamp | date:"short"}}
+        </li>
+      </ul>
 
 </div>

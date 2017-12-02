@@ -14,11 +14,17 @@ export class NoteService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private hostUrl = 'http://localhost:8080';
   private notePostUrl = '/api/note';
-  private notesGetUrl = '/api/notes'
+  private notesGetUrl = '/api/notes';
+  private recentNotesUrl = '/api/notes/recent';
   result:any;
 
-  getOldNotes() {
+  getNotes() {
     var url = this.hostUrl+this.notesGetUrl;
+    return this.http.get(url);
+  }
+
+  getRecentNotes() {
+    var url = this.hostUrl+this.recentNotesUrl;
     return this.http.get(url);
   }
 
