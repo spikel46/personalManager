@@ -5,7 +5,7 @@ module.exports = function(app) {
 
   app.get("/api/notes", (req, res) => {
     Note.find({}, function(err, noteArray) {
-      console.log(data);
+      console.log(noteArray);
       res.json(noteArray);
     });
 

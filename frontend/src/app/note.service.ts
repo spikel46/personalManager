@@ -14,7 +14,13 @@ export class NoteService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private hostUrl = 'http://localhost:8080';
   private notePostUrl = '/api/note';
+  private notesGetUrl = '/api/notes'
   result:any;
+
+  getOldNotes() {
+    var url = this.hostUrl+this.notesGetUrl;
+    return this.http.get(url);
+  }
 
   postNote(formInfo) {
     console.log(JSON.stringify(formInfo));

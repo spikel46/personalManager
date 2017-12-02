@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.notes = new Array();
+    this.getChats();
   }
 
   createNote(){
@@ -26,14 +27,14 @@ export class DashboardComponent implements OnInit {
     console.log(ret_Note);
     this.noteService.postNote(ret_Note)
         .map(res => res.json())
-        .subscribe(newNote => this.notes.push(newNote.data));
+        .subscribe(newNote => this.notes.push(newNote));
   }
-/*
+
   getChats(): void {
     this.noteService.getOldNotes()
         .map(oldNotes => oldNotes.json())
-        .subscribe(data => console.log(data));
-  }*/
+        .subscribe(data => this.notes = data);
+  }
 
   /*getChatStream():void {
     this.connection = this.chatsService.getChatStream(this.id)
