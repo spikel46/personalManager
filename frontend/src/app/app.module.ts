@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NoteService } from './note.service';
+import { ReminderService } from './reminder.service';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { NoteService } from './note.service';
     FormsModule,
     HttpModule
   ],
-  providers: [NoteService],
+  providers: [
+    NoteService,
+    ReminderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

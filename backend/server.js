@@ -27,6 +27,8 @@ app.use(bodyParser.json());
 
 // routes ======================================================================
 require('./app/routes/noteRoutes.js')(app); // load our routes and pass in our app
+//require('./app/routes/reminderRoutes.js')(app); // load our routes and pass in our app
+
 
 var port = process.env.PORT || 8080;
 app.listen(port);
