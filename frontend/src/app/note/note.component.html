@@ -1,0 +1,32 @@
+<div class="col-sm-6 col-sm-offset-3">
+
+  <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+  <form (ngSubmit)="createNote()" #noteForm="ngForm">
+      <div class="form-group">
+          <label>Content</label>
+          <input type="text" class="form-control" name="content" [(ngModel)]="contentStr" required>
+      </div>
+<!-- clear after submit -->
+      <button type="submit" class="btn btn-success">Create Note</button>
+  </form>
+
+  <hr>
+
+</div>
+
+<h2>Active Notes</h2>
+  <ul class="notes">
+    <li *ngFor="let note of activeNotes">
+      {{note.content}} Date: {{note.timestamp | date:"short"}} Archived {{note.archived}}
+      <button (click)="archiveNote(note._id)" style="color:red"> Archive</button>
+    </li>
+  </ul>
+
+  <h2>Archived Notes</h2>
+    <ul class="notes">
+      <li *ngFor="let note of archivedNotes">
+        {{note.content}} Date: {{note.timestamp | date:"short"}}
+        <button (click)="archiveNote(note._id)" style="color:red"> Archive</button>
+      </li>
+    </ul>

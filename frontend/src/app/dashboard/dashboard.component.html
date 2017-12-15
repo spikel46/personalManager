@@ -1,74 +1,20 @@
+<!-- put in "welcome user" here -->
 <div class="container">
-
-  <div class="col-sm-6 col-sm-offset-3">
-
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
-
-    <form (ngSubmit)="createNote()" #noteForm="ngForm">
-        <div class="form-group">
-            <label>Content</label>
-            <input type="text" class="form-control" name="content" [(ngModel)]="contentStr" required>
-        </div>
-
-        <button type="submit" class="btn btn-success">Create Note</button>
-    </form>
-
-    <hr>
-
+  <div [routerLink]="['/note']">
+    <h2>Most Recent Notes</h2>
+      <ul class="recentNotes">
+        <li *ngFor="let note of recentNotes">
+          {{note?.content}} Date: {{note?.timestamp | date:"short"}} Archived {{note?.archived}}
+        </li>
+      </ul>
   </div>
 
-  <div class="col-sm-6 col-sm-offset-6">
-
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
-
-    <form (ngSubmit)="createReminder()" #reminderForm="ngForm">
-        <div class="form-group">
-            <label>Content</label>
-            <input type="text" class="form-control" name="content" [(ngModel)]="contentStr" required>
-        </div>
-        <div class="form-group">
-            <label>Deadline</label>
-            <input type="date" class="form-control" name="dateStr" [(ngModel)]="dateStr" required>
-        </div>
-        <div class="form-group">
-            <label>Time(local,24hr)</label>
-            <input type="text" class="form-control" name="timeStr" [(ngModel)]="timeStr" placeholder="--:--"required>
-        </div>
-
-        <button type="submit" class="btn btn-success">Create Reminder</button>
-    </form>
-
-    <hr>
-
+  <div [routerLink]="['/reminder']">
+    <h2>Most Recent Reminders</h2>
+      <ul class="reminders">
+        <li *ngFor="let reminder of recentReminders">
+          {{reminder?.note.content}} For: {{reminder?.deadline | date:"short"}} Created: {{reminder?.note.timestamp | date:"short"}}
+        </li>
+      </ul>
   </div>
-
-  <h2>All Notes</h2>
-    <ul class="notes">
-      <li *ngFor="let note of notes">
-        {{note.content}} Date: {{note.timestamp | date:"short"}}
-      </li>
-    </ul>
-
-  <h2>Most Recent Notes</h2>
-    <ul class="recentNotes">
-      <li *ngFor="let note of recentNotes">
-        {{note?.content}} Date: {{note?.timestamp | date:"short"}}
-      </li>
-    </ul>
-
-  <h2>All Reminders</h2>
-    <ul class="reminders">
-      <li *ngFor="let reminder of reminders">
-        {{reminder.note.content}} For: {{reminder.deadline | date:"short"}} Created: {{reminder.note.timestamp | date:"short"}}
-      </li>
-    </ul>
-
-  <h2>Most Recent Reminders</h2>
-    <ul class="reminders">
-      <li *ngFor="let reminder of recentReminders">
-        {{reminder?.note.content}} For: {{reminder?.deadline | date:"short"}} Created: {{reminder?.note.timestamp | date:"short"}}
-      </li>
-    </ul>
-
-
 </div>

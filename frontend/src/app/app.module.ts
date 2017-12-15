@@ -7,14 +7,23 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import { NoteService } from './note.service';
-import { ReminderService } from './reminder.service';
+import { NoteService } from './services/note.service';
+import { ReminderService } from './services/reminder.service';
+
+import { NoteComponent } from './note/note.component';
+import { ReminderComponent } from './reminder/reminder.component';
+import { TaskComponent } from './task/task.component';
+import { RoutineComponent } from './routine/routine.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    NoteComponent,
+    ReminderComponent,
+    TaskComponent,
+    RoutineComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ module.exports = function(app) {
 
   var path = require("path");
 
+/* notes */
+
   app.get("/api/notes", (req, res) => {
     var query = Note.find();
     query.exec(function(err, noteArray) {
@@ -21,6 +23,7 @@ module.exports = function(app) {
     // set the user"s local credentials
     newNote.content = req.body.content;
     newNote.timestamp = new Date();
+    newNote.archived = false;
 
     console.log(newNote);
 
@@ -41,24 +44,20 @@ module.exports = function(app) {
     });
   })
 
+  app.put('/api/notes/archive/:id', (req,res) => {
+    var query = Note.findOne({_id:req.body.id});
+    query.exec(function(err, found){
+      found.archived=!found.archived;
+      found.save(function(err){
+        res.status(200).send(found);
+      });
+    });
+});
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*reminders*/
 
 
 

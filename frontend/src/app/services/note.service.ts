@@ -16,10 +16,10 @@ export class NoteService {
   private notePostUrl = '/api/note';
   private notesGetUrl = '/api/notes';
   private recentNotesUrl = '/api/notes/recent';
-  private archiveNoteUrl = '/api/notes/archive/';
+  private archiveNotesUrl = '/api/notes/archive/';
   result:any;
 
-  getNotes() {
+  getNotes(){
     var url = this.hostUrl+this.notesGetUrl;
     return this.http.get(url);
   }
@@ -38,13 +38,11 @@ export class NoteService {
           {headers: this.headers});
   }
 
-  /*sendUpvote(up_chat: Chat): Promise<Chat> {
-  return this.http.put(this.hostUrl+'/api/chats/'+ up_chat["_id"] + '/upvote',
-                       JSON.stringify(up_chat),
-     {headers: this.headers})
-             .toPromise()
-       .then(res => res.json() as Chat)
-       .catch(this.handleError);
-}*/
+  archiveNote(id){
+    var url = this.hostUrl+this.archiveNotesUrl;
+    return this.http.put(url+id,
+          JSON.stringify({id:id}),
+          {headers: this.headers});
+  }
 
 }
