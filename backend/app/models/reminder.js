@@ -3,7 +3,8 @@ var mongoose = require("mongoose");
 var reminderSchema = mongoose.Schema({
   note: {
           content: String,
-          timestamp: Date
+          timestamp: Date,
+          archived: Boolean
         },
   deadline: Date
 });

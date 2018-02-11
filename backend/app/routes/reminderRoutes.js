@@ -1,4 +1,4 @@
-var Reminder = require("../models/reminder");
+/*var Reminder = require("../models/reminder");
 module.exports = function(app) {
 
   var path = require("path");
@@ -45,3 +45,4 @@ module.exports = function(app) {
   });
 
 };
+*/

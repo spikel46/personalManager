@@ -16,6 +16,7 @@ export class ReminderService {
   private reminderPostUrl = '/api/reminder';
   private remindersGetUrl = '/api/reminders';
   private recentRemindersUrl = '/api/reminders/recent';
+  private archiveRemindersUrl = '/api/reminders/archive/';
   result:any;
 
   getReminders() {
@@ -34,6 +35,13 @@ export class ReminderService {
 
     return this.http.post(url,
           JSON.stringify(formInfo),
+          {headers: this.headers});
+  }
+
+  archiveReminder(id){
+    var url = this.hostUrl+this.archiveRemindersUrl+id;
+    return this.http.put(url+id,
+          JSON.stringify({id:id}),
           {headers: this.headers});
   }
 

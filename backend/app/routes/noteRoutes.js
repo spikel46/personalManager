@@ -1,5 +1,7 @@
 var Note = require("../models/note");
 var Reminder = require("../models/reminder");
+var Task = require("../models/task");
+
 module.exports = function(app) {
 
   var path = require("path");
@@ -99,6 +101,38 @@ module.exports = function(app) {
       res.json(reminderArray);
     });
   })
+
+/* task */
+app.get("/api/tasks", (req, res) => {
+  var query = Note.find();
+  query.exec(function(err, taskArray) {
+    console.log(taskArray);
+    res.json(taskArray);
+  });
+
+});
+
+app.post("/api/task", (req, res) => {
+
+  console.log(req.body);
+  var newTask = new Task();
+
+  // set the user"s local credentials
+  newTask.title = req.body.title;
+  newTask.expectedTime = req.body.expectedTime;
+  newTask.samples = req.body.samples;
+
+  console.log(newTask);
+
+  // save the user
+  newNote.save(function(err) {
+      if (err)
+          throw err;
+      res.status(200).send(newTask);
+  });
+
+});
+
 
 
   app.get("*", (req, res) => {
