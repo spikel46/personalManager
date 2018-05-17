@@ -1,7 +1,11 @@
-/*var Reminder = require("../models/reminder");
-module.exports = function(app) {
+var Reminder = require("../models/reminder");
+var express = require('express');
+var app = module.exports = express.Router();
 
   var path = require("path");
+
+  /*reminders*/
+
 
   app.get("/api/reminders", (req, res) => {
     var query = Reminder.find();
@@ -19,6 +23,7 @@ module.exports = function(app) {
 
     // set the user"s local credentials
     reminder.note = req.body.note;
+    reminder.note.timestamp= new Date();
     reminder.deadline = req.body.deadline;
 
     console.log(reminder);
@@ -29,7 +34,6 @@ module.exports = function(app) {
             throw err;
         res.status(200).send(reminder);
     });
-
   });
 
   app.get("/api/reminders/recent", (req, res) => {
@@ -38,11 +42,4 @@ module.exports = function(app) {
       console.log(reminderArray);
       res.json(reminderArray);
     });
-  })
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve("../dist/index.html"));
   });
-
-};
-*/

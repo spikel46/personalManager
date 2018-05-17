@@ -21,8 +21,12 @@
     "@angular/platform-browser": "^5.0.5",
     "@angular/platform-browser-dynamic": "^5.0.5",
     "@angular/router": "^5.0.5",
+    "aframe": "^0.8.2",
     "core-js": "^2.4.1",
+    "plyr": "^3.3.7",
     "rxjs": "^5.5.3",
+    "socket.io": "^2.1.0",
+    "socket.io-client": "^2.1.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

@@ -7,6 +7,8 @@ import { NoteComponent } from '../note/note.component';
 import { ReminderComponent } from '../reminder/reminder.component';
 import { TaskComponent } from '../task/task.component';
 import { RoutineComponent } from '../routine/routine.component';
+import { TheaterComponent } from '../theater/theater.component';
+import { VrComponent } from '../vr/vr.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'note', component: NoteComponent },
   { path: 'reminder', component: ReminderComponent },
   { path: 'task', component: TaskComponent },
-  { path: 'routine', component: RoutineComponent }
+  { path: 'routine', component: RoutineComponent },
+  { path: 'theater', component: TheaterComponent },
+  { path: 'vr', component: VrComponent }
 ];
 
 @NgModule({

@@ -1,9 +1,11 @@
-var express = require("express"); //webserver wrapper
+var express = require("express");          //webserver wrapper
 var app = express();
-var mongoose = require("mongoose"); //manage mongodb
+
+var mongoose = require("mongoose");        //manage mongodb
 
 var morgan = require("morgan");
-var bodyParser = require("body-parser"); //parse the body of requests
+var bodyParser = require("body-parser");   //parse the body of requests
+
 
 var configDB = require("./config/database.js");
 
@@ -26,10 +28,25 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // routes ======================================================================
-require('./app/routes/noteRoutes.js')(app); // load our routes and pass in our app
-//require('./app/routes/reminderRoutes.js')(app); // load our routes and pass in our app
-
+app.use(require('./app/routes/reminderRoutes.js')); // load our routes and pass in our app
+app.use(require('./app/routes/noteRoutes.js')); // load our routes and pass in our app
 
 var port = process.env.PORT || 8080;
-app.listen(port);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(port);
 console.log("Listening on port " + port);
+
+//TRIAL SHIT
+io.on('connection', (socket) => {
+  console.log('user connected');
+
+  socket.on('disconnect', function(){ 
+    console.log('user disconnected'); 
+  });
+
+  socket.on('foo', (Chat) => { 
+    console.log(Chat);
+    io.emit('bar', Chat); 
+  });
+});

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -14,6 +14,8 @@ import { NoteComponent } from './note/note.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { TaskComponent } from './task/task.component';
 import { RoutineComponent } from './routine/routine.component';
+import { TheaterComponent } from './theater/theater.component';
+import { VrComponent } from './vr/vr.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { RoutineComponent } from './routine/routine.component';
     NoteComponent,
     ReminderComponent,
     TaskComponent,
-    RoutineComponent
+    RoutineComponent,
+    TheaterComponent,
+    VrComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { RoutineComponent } from './routine/routine.component';
     NoteService,
     ReminderService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
